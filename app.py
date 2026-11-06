@@ -88,7 +88,7 @@ with st.container(key="kopf"):
 st.markdown(
     """
 **Welche Schranke lohnt im Suchbaum?** Dieselbe Aufgabe wie in Stück 1 bis 7: `n` Bauteile auf `n` Plätze, Kosten gleich der Summe aus **Fluss mal Abstand** über alle Paare. Hier wird das Optimum **bewiesen**, nicht nur gefunden: ein Baum setzt Bauteil für Bauteil auf einen Platz (ein **Knoten** ist eine
-Teilzuordnung), und eine **Schranke** sagt für jeden Knoten, was jede Fortsetzung mindestens kostet. Ist das schon so viel wie die beste bekannte Anordnung, wird der ganze Ast **beschnitten**. Je schärfer die Schranke, desto weniger Knoten; je schärfer, desto mehr Rechenarbeit je Knoten.
+Teilzuordnung), und eine **Schranke** sagt für jeden Knoten, was jede Fortsetzung mindestens kostet. Ist das schon so viel wie die beste bekannte Anordnung, wird der ganze Ast **beschnitten**. Je schärfer die Schranke in jedem Knoten, desto weniger Knoten, aber desto mehr Rechenarbeit je Knoten.
 Gemessen werden die Schranken der Reihe (Stück 3 bis 5) im Baum: **Gilmore–Lawler** (eine lineare Zuordnung je Knoten), die **projizierte Schranke** (Spektrum, Stück 4) und **zwei Runden Dual Ascent** (Stück 5), dazu zwei einfache Maßstäbe.
 Die sechs Familien der Flussmatrix sind **eigene, einfache Erfindungen** (aus Stück 2); alle Knotenschranken sind **eigene einfache Fassungen**, nicht die Verfahren der Literatur. Stück 8 der Reihe „Anordnen: relaxieren und runden“.
 
@@ -119,7 +119,7 @@ with st.sidebar:
     st.markdown("**Die Instanz**")
     family = st.selectbox("Familie der Flussmatrix", C.FAMILIES, key="family_select", format_func=lambda f: C.FAMILY_NAMES[f], help="Wie der Fluss zwischen den Bauteilen verteilt ist. Die Beschreibung steht unter dem Regler.")
     st.caption(C.FAMILY_HELP[family])
-    n = st.select_slider("Bauteile n", options=C.SIZES, key="n_select", help="Bis n = 8 rechnet die App alle Schranken sofort; n = 9 auf Knopfdruck (ohne Schranke rund eine Million Knoten); ab n = 12 nur mit Gilmore–Lawler und einer Obergrenze von 100 000 Knoten.")
+    n = st.select_slider("Bauteile n", options=C.SIZES, key="n_select", help="Bis n = 8 rechnet die App alle Schranken sofort; n = 9 auf Knopfdruck (der volle Baum ohne Beschneiden hat rund eine Million Knoten); ab n = 12 nur mit Gilmore–Lawler und einer Obergrenze von 100 000 Knoten.")
     seed = st.number_input("Zufalls-Seed", *bounds("seed_input"), key="seed_input", step=1)
     st.button("🎲 Neue Instanz", width="stretch", on_click=randomize_seed)
     st.markdown("**Die Suche**")
@@ -133,7 +133,7 @@ done = st.session_state.setdefault("gates_done", set())
 gated = (settings.n == 9 or settings.n >= 12) and (settings.family, settings.n, settings.seed, settings.order, settings.incumbent) not in done
 if gated:
     if settings.n == 9:
-        st.info("Bei n = 9 sind es 362 880 Anordnungen (die Aufzählung für die Probe) und ohne Schranke rund eine Million Knoten; die Rechnung dauert rund eine Minute (auf Streamlit Cloud länger). Mit dem Knopf starten:")
+        st.info("Bei n = 9 sind es 362 880 Anordnungen (die Aufzählung für die Probe) und der volle Baum ohne Beschneiden hat rund eine Million Knoten (mit der Schranke „feste Kosten“ war es bei Netzliste, Seed 35 etwa ein Zehntel); die Rechnung dauert rund eine Minute (auf Streamlit Cloud länger). Mit dem Knopf starten:")
     else:
         st.info(f"Bei n = {settings.n} rechnet die App nur die Gilmore–Lawler-Schranke, höchstens {count(C.NODE_CAP)} Knoten; die Rechnung dauert bis zu einer Minute (auf Streamlit Cloud länger). Mit dem Knopf starten:")
     if st.button(f"⏱️ n = {settings.n} rechnen", key="n9_button" if settings.n == 9 else "big_button"):
