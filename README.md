@@ -1,9 +1,8 @@
 # Branch and Bound mit Schranke – Streamlit-Demo
 
-<!-- TODO nach dem Deploy: direkt hierher den Live-Link setzen (Leerzeile davor und danach):
-**[→ Demo live ausprobieren](https://sebastianhanisch-schranke-im-baum-demo.streamlit.app/)** -->
+**[→ Demo live ausprobieren](https://sebastianhanisch-schranke-im-baum-demo.streamlit.app/)**
 
-Stück 8 von 15 der **Konzepte-Reihe „Anordnen: relaxieren und runden“** für die Website „Sebastian Hanisch – Operations Research und Machine Learning“ (die Konzepte-Seite der Reihe gibt es noch nicht). Die Stücke 3 bis 6 haben Schranken gebaut: [Gilmore–Lawler](https://github.com/sebastian-hanisch/gilmore-lawler-demo), [Eigenwert und Projektion](https://github.com/sebastian-hanisch/eigenwert-schranke-demo), [Linearisierung und Dual Ascent](https://github.com/sebastian-hanisch/linearisierung-schranke-demo) und die [doppeltstochastische Relaxation](https://github.com/sebastian-hanisch/birkhoff-relaxation-demo). Dieses Stück setzt sie **im Suchbaum** ein (Kante der Reihe: *Zusammenfluss*) und fragt, welche sich lohnt: Schärfe spart Knoten, kostet aber Arbeit je Knoten.
+Stück 8 von 15 der **Konzepte-Reihe „Anordnen: relaxieren und runden“** für die Website „Sebastian Hanisch – Operations Research und Machine Learning“ (die [Konzepte-Seite der Reihe](https://sebastianhanisch.net/konzepte-anordnen.html)). Die Stücke 3 bis 6 haben Schranken gebaut: [Gilmore–Lawler](https://github.com/sebastian-hanisch/gilmore-lawler-demo), [Eigenwert und Projektion](https://github.com/sebastian-hanisch/eigenwert-schranke-demo), [Linearisierung und Dual Ascent](https://github.com/sebastian-hanisch/linearisierung-schranke-demo) und die [doppeltstochastische Relaxation](https://github.com/sebastian-hanisch/birkhoff-relaxation-demo). Dieses Stück setzt sie **im Suchbaum** ein (Kante der Reihe: *Zusammenfluss*) und fragt, welche sich lohnt: Schärfe spart Knoten, kostet aber Arbeit je Knoten.
 
 ## Warum dieses Problem
 
